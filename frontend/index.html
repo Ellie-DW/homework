@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>카운터</title>
+  <style>
+    body {
+      background-color: lightgray;
+      text-align: center;
+      padding-top: 100px;
+    }
+    #box {
+      background-color: white;
+      width: 400px;
+      margin: 0 auto;
+      padding: 30px;
+      border: 1px solid gray;
+    }
+    #count {
+      font-size: 50px;
+      color: blue;
+      margin: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: darkblue;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <h1>카운터</h1>
+    <div id="count">0</div>
+    <button onclick="plusOne()">+</button>
+    <button onclick="minusOne()">-</button>
+  </div>
+
+  <script>
+    const api = 'http://localhost:5000';
+
+    window.onload = () => {
+      fetch(api + '/count')
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('count').innerHTML = data.count;
+        });
+    }
+
+    const plusOne = () => {
+      fetch(api + '/increment', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('count').innerHTML = data.count;
+        });
+    }
+
+    const minusOne = () => {
+      fetch(api + '/decrement', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('count').innerHTML = data.count;
+        });
+    }
+  </script>
+</body>
+</html>
+
