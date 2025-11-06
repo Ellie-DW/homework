@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, dw ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, dw ]
+    branches: [ main ]
 
 jobs:
   test:
@@ -94,7 +94,7 @@ jobs:
     name: 배포 준비 완료 알림
     needs: [test, build, lint]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dw'
+    if: github.ref == 'refs/heads/main'
     
     steps:
     - name: 배포 준비 완료
