@@ -1,14 +1,20 @@
 {
-  "name": "counter-backend",
+  "name": "finance-backend",
   "version": "1.0.0",
+  "description": "오늘 수익/지출 관리 서비스 백엔드",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node server.test.js",
+    "dev": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
     "mysql2": "^3.6.0",
     "cors": "^2.8.5"
-  }
+  },
+  "keywords": ["finance", "expense", "income", "tracker"],
+  "author": "",
+  "license": "ISC"
 }
 
